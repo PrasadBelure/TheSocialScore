@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <title>Activity Report Page</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #fff; /* Matches the footer background */
+            color: #333;
+        }
+        #content {
+            padding: 20px;
+            background-color: #dc9e82;
+            min-height: 80vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 00px;
+            border-radius: 10px;
+        }
+        .activity-form {
+            width: 100%;
+            min-width: 400px;
+            max-width: 500px;
+            padding: 20px;
+            background-color: #f5f5dc;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .activity-form label, 
+        .activity-form button, 
+        .activity-form input, 
+        .activity-form select, 
+        .activity-form textarea {
+            display: block;
+            width: 100%;
+            margin-bottom: 15px;
+        }
+        .activity-form input, 
+        .activity-form select, 
+        .activity-form textarea {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .activity-form button {
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            background-color: #c16e70;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .activity-form button:hover {
+            background-color: #dc9e82;
+        }
+    </style> 
+    <link rel="stylesheet" href="{{ url_for('static', filename='footer.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='NavBar.css') }}">
+</head>
+<body>
+    <div id="navbar">
+        <h1 class="sitename">The Social Score</h1>
+        <ul class="navitems">
+            <li class="navitem">
+                <a href="{{ url_for('homepage') }}" class="navlink">Home</a>
+    
+            </li>
+    
+            <li class="navitem">
+                <a href="#" class="navlink">About</a>
+                <div class="additional-info">Learn more about our college and system.</div>
+            </li>
+    
+            <li class="navitem">
+                <a href="#" class="navlink">Contact</a>
+                <div class="additional-info">Get in touch with us for any inquiries or support.</div>
+            </li>
+    
+            <li class="navitem">
+                <a href="#" class="navlink">RuleBook</a>
+                <div class="additional-info">Read our rulebook for guidelines and policies.</div>
+            </li>
+    
+            <li class="navitem">
+                <a href="#" class="navlink">Profile</a>
+                <div class="additional-info">View and manage your profile information.</div>
+            </li>
+    
+            <li class="navitem">
+                <a href="#" class="navlink">Activities</a>
+                <div class="additional-info">Explore and participate in various activities.</div>
+            </li>
+    
+            <li class="navitem">
+                <a href="#" class="navlink">Leaderboard</a>
+                <div class="additional-info">See who's leading the social credit score.</div>
+            </li>
+    
+            <li class="navitem">
+                <a href="#" class="navlink">News & Updates</a>
+                <div class="additional-info">Stay updated with the latest news and announcements.</div>
+            </li>
+        </ul>
+    </div>
+    
+    <div id="content">
+        <form action="/submitreport" method="POST">
+        <div class="activity-form">
+            <form action="/submit-report" method="POST">
+                <label for="activity">Select activity</label>
+                <select id="activity" name="activity">
+                    <option value="Library Assistant">Library Assistant</option>
+                    <option value="Lab Assistant">Lab Assistant</option>
+                    <option value="Teaching Assitant">Teaching Assitant</option>
+                </select>
+
+                <label for="studentname">Student Name</label> 
+                <input type="text" id="studentname" name="studentname" placeholder="Enter your name">
+
+                <label for="teacher">Guided by</label>
+                <select id="teacher" name="teacher">
+                    <option value="Shilpa Lambor">Shilpa Lambor</option>
+                    <option value="Ganesh Ubale">Ganesh Ubale</option>
+                    <option value="Sharad Sharma">Sharad Sharma</option>
+                </select>
+
+                <label for="report">Report description</label>
+                <textarea id="report" name="report" rows="5" placeholder="Enter your report description"></textarea>
+
+                <button type="submit">Submit report</button>
+            </form>
+        </div>
+    </form>
+    </div> 
+    <div class="footer">
+        <div class="footer-column">
+            <h3>About SocialScore</h3>
+            <ul>
+                <li><a href="#">About us</a></li>
+                <li><a href="#">Contact us</a></li>
+                <li><a href="#">Mobile Version</a></li>
+                <li><a href="#">SocialScore on Mobile</a></li>
+                <li><a href="#">Sitemap</a></li>
+                <li><a href="#">Offers</a></li>
+                <li><a href="#">Careers</a></li>
+                <li><a href="#">Values</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3>Info</h3>
+            <ul>
+                <li><a href="#">Terms and Conditions</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">FAQ</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">User Guide</a></li>
+                <li><a href="#">API Documentation</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3>Global Sites</h3>
+            <ul>
+                <li><a href="#">United States</a></li>
+                <li><a href="#">Canada</a></li>
+                <li><a href="#">United Kingdom</a></li>
+                <li><a href="#">Australia</a></li>
+                <li><a href="#">India</a></li>
+                <li><a href="#">Singapore</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3>Our Partners</h3>
+            <ul>
+                <li><a href="#">Partner 1</a></li>
+                <li><a href="#">Partner 2</a></li>
+                <li><a href="#">Partner 3</a></li>
+                <li><a href="#">Partner 4</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        SocialScore is a leading platform for analyzing and managing social scores, trusted by users globally.
+        SocialScore offers insights through its website and mobile apps for all major platforms.<br>
+        © 2024 SocialScore Inc.
+    </div>
+</body>
+</html>

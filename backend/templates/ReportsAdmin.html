@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Approval Pending</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='footer.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='NavBar.css') }}">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #1b1b33;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .header, .footer {
+            background-color: #1b1b33;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .main {
+            display: flex;
+            flex: 1;
+        }
+
+        .sidebar {
+            background-color: #1b1b33;
+            color: #fff;
+            width: 200px;
+            padding: 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .sidebar a {
+            display: block;
+            color: #fff;
+            text-decoration: none;
+            padding: 10px;
+            width: 100%;
+            text-align: left;
+            margin-bottom: 10px;
+        }
+
+        .sidebar a:hover {
+            background-color: #555;
+        }
+
+        .profile-pic {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: #ccc;
+            margin-bottom: 10px;
+        }
+
+        .content {
+            background-color: #dc9e82;
+            padding: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .content-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .content-header h2 {
+            color: #000;
+        }
+
+        .content-header button {
+            background-color: #fff;
+            color: #000;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .approval-list {
+            background-color: #f5f5dc;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .approval-item {
+            background-color: #f5f5dc;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            color: #000;
+            position: relative;
+        }
+
+        .approve-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition-duration: 0.4s;
+        }
+
+        .approve-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #b04040; /* Green */
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition-duration: 0.4s;
+        }
+
+        .approve-button:hover {
+            background-color: #45a049; /* Darker green on hover */
+        }
+
+        .reject-button:hover {
+            background-color: #8d3232; /* Darker green on hover */
+        }
+
+        .approval-item:hover {
+            background-color: #dc9e82; /* Yellow on hover */
+        }
+
+        .footer {
+            background-color: #1b1b33;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 15px;
+        }
+
+        .pagination button {
+            background-color: #1b1b33;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            margin-left: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .pagination button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div id="navbar">
+        <h1 class="sitename">The Social Score</h1>
+        <ul class="navitems">
+            <li class="navitem">
+                <a href="{{ url_for('homepage') }}" class="navlink">Home</a>
+            </li>
+            <li class="navitem">
+                <a href="#" class="navlink">About</a>
+                <div class="additional-info">Learn more about our college and system.</div>
+            </li>
+            <li class="navitem">
+                <a href="#" class="navlink">Contact</a>
+                <div class="additional-info">Get in touch with us for any inquiries or support.</div>
+            </li>
+            <li class="navitem">
+                <a href="#" class="navlink">RuleBook</a>
+                <div class="additional-info">Read our rulebook for guidelines and policies.</div>
+            </li>
+            <li class="navitem">
+                <a href="#" class="navlink">Profile</a>
+                <div class="additional-info">View and manage your profile information.</div>
+            </li>
+            <li class="navitem">
+                <a href="#" class="navlink">Activities</a>
+                <div class="additional-info">Explore and participate in various activities.</div>
+            </li>
+            <li class="navitem">
+                <a href="#" class="navlink">Leaderboard</a>
+                <div class="additional-info">See who's leading the social credit score.</div>
+            </li>
+            <li class="navitem">
+                <a href="#" class="navlink">News & Updates</a>
+                <div class="additional-info">Stay updated with the latest news and announcements.</div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="main">
+        <div class="sidebar">
+            <div class="profile-pic"></div>
+            <div class="admin-name">{{ session['admin_username'] }}</div>
+            <a href="#">Profile</a>
+            <a href="{{ url_for('mystudents') }}">My students</a>
+            <a href="{{ url_for('listactivity') }}">List Activities</a>
+            <a href="{{ url_for('listevents') }}">List events</a>
+            <a href="{{ url_for('reports') }}">Reports</a>
+            <a href="{{ url_for('violations') }}">Violations</a>
+            <a href="{{ url_for('statistics') }}">Statistics</a>
+        </div>
+        <div class="content">
+            <div class="content-header">
+                <h2>Approval pending</h2>
+                <button>Past reports</button>
+            </div>
+            <div class="approval-list
+            ">
+            {% if reports %}
+                {% for report in reports %}
+                    <div class="approval-item">
+                        <h3>{{ report.activityname }}</h3>
+                        <p>{{ report.report_description }}</p>
+                        <p><strong>Student Name:</strong> {{ report.studentname }}</p>
+                        <p><strong>Teacher:</strong> {{ report.teacher }}</p>
+                        <button class="approve-button">Approve</button>
+                        <button class="reject-button">Reject</button>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>No reports found.</p>
+            {% endif %}
+        </div>
+        <div class="pagination">
+            <button>&lt;</button>
+            <button>&gt;</button>
+        </div>
+    </div>
+</div>
+
+<div class="footer">
+    <div class="footer-column">
+        <h3>About SocialScore</h3>
+        <ul>
+            <li><a href="#">About us</a></li>
+            <li><a href="#">Contact us</a></li>
+            <li><a href="#">Mobile Version</a></li>
+            <li><a href="#">SocialScore on Mobile</a></li>
+            <li><a href="#">Sitemap</a></li>
+            <li><a href="#">Offers</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Values</a></li>
+        </ul>
+    </div>
+    <div class="footer-column">
+        <h3>Info</h3>
+        <ul>
+            <li><a href="#">Terms and Conditions</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">User Guide</a></li>
+            <li><a href="#">API Documentation</a></li>
+        </ul>
+    </div>
+    <div class="footer-column">
+        <h3>Global Sites</h3>
+        <ul>
+            <li><a href="#">United States</a></li>
+            <li><a href="#">Canada</a></li>
+            <li><a href="#">United Kingdom</a></li>
+            <li><a href="#">Australia</a></li>
+            <li><a href="#">India</a></li>
+            <li><a href="#">Singapore</a></li>
+        </ul>
+    </div>
+    <div class="footer-column">
+        <h3>Our Partners</h3>
+        <ul>
+            <li><a href="#">Partner 1</a></li>
+            <li><a href="#">Partner 2</a></li>
+            <li><a href="#">Partner 3</a></li>
+            <li><a href="#">Partner 4</a></li>
+        </ul>
+    </div>
+</div>
+<div class="footer-bottom">
+    SocialScore is a leading platform for analyzing and managing social scores, trusted by users globally.
+    SocialScore offers insights through its website and mobile apps for all major platforms.<br>
+    © 2024 SocialScore Inc.
+</div>
+</body>
+</html>

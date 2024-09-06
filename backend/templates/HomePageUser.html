@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Social Score</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='HomePage.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='footer.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='NavBar.css') }}">
+
+</head>
+
+<body>
+
+    <div id="navbar">
+        <h1 class="sitename">The Social Score</h1>
+        <ul class="navitems">
+            <li class="navitem">
+                <a href="{{ url_for('homepage') }}" class="navlink">Home</a>
+
+            </li>
+
+            <li class="navitem">
+                <a href="#" class="navlink">About</a>
+                <div class="additional-info">Learn more about our college and system.</div>
+            </li>
+
+            <li class="navitem">
+                <a href="#" class="navlink">Contact</a>
+                <div class="additional-info">Get in touch with us for any inquiries or support.</div>
+            </li>
+
+            <li class="navitem">
+                <a href="#" class="navlink">RuleBook</a>
+                <div class="additional-info">Read our rulebook for guidelines and policies.</div>
+            </li>
+
+            <li class="navitem">
+                <a href="#" class="navlink">Profile</a>
+                <div class="additional-info">View and manage your profile information.</div>
+            </li>
+
+            <li class="navitem">
+                <a href="#" class="navlink">Activities</a>
+                <div class="additional-info">Explore and participate in various activities.</div>
+            </li>
+
+            <li class="navitem">
+                <a href="{{ url_for('leaderboard') }}" class="navlink">Leaderboard</a>
+                <div class="additional-info">See who's leading the social credit score.</div>
+            </li>
+
+            <li class="navitem">
+                <a href="#" class="navlink">News & Updates</a>
+                <div class="additional-info">Stay updated with the latest news and announcements.</div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="homeprofile">
+        <div class="fhalf">
+            <div class="proimg">
+                <img src="https://m.media-amazon.com/images/I/41jLBhDISxL.jpg">
+            </div>
+
+        </div>
+        <div class="shalf">
+            <div class="usernm">
+                <div class="name">
+                    <h4>{{ first_name }} {{ last_name }}</h4>
+                </div>
+                <div class="username"> <label for="username">
+                        <h4>{{ username }}</h4>
+                    </label></div>
+            </div>
+            {% for image in images %}
+            <span><img class="badge" src="{{ image }}"></span>
+            {% endfor %}
+        </div>
+
+    </div>
+
+    <div class="search">
+        <input class="searchbar" type="text">
+        <button class="searchbutton">Search</button>
+        <button class="taskbutton">+Add Task</button>
+    </div>
+
+    <div class="lower">
+        <div>
+            <label class="label" for="socialactivity" class="func">
+                <h3>Activities</h3>
+            </label>
+            <div class="Social">
+                {% for activity in activities %}
+                <form method="POST" action="{{ url_for('activity') }}">
+                    <div class="activity" onclick="this.parentNode.submit()">{{ activity['activity_name'] }}</div>
+                    <input type="text" name="activity_id" value="{{ activity['activity_id'] }}" hidden />
+                </form>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div>
+
+            <label class="label" for="report" class="func">
+                <h3>Other Options</h3>
+            </label>
+            <div>
+
+                <label class="label" for="report" class="func">
+                   
+                </label>
+                <div class="Social">
+            
+                    <!-- Form for "Submit Report" -->
+                    <form method="GET" action="{{ url_for('submit_report_page') }}">
+                        <div class="activity" onclick="this.parentNode.submit()">Submit Report</div>
+                    </form> 
+                    <form method="GET" action="{{ url_for('view_records') }}">
+                        <div class="activity" onclick="this.parentNode.submit()">View Records</div>
+                    </form>
+                    <form method="GET" action="{{ url_for('submit_certificate') }}">
+                        <div class="activity" onclick="this.parentNode.submit()">Submit Certificates</div>
+                    </form>
+                    <form method="GET" action="{{ url_for('report_incident') }}">
+                        <div class="activity" onclick="this.parentNode.submit()">Report Incident</div>
+                    </form>
+                    <form method="GET" action="{{ url_for('feedback') }}">
+                        <div class="activity" onclick="this.parentNode.submit()">Feedback</div>
+                    </form>
+            
+                   
+                    
+                    
+                    
+            
+                </div>
+            </div>
+            
+        </div>
+        <div>
+            <label class="label" for="events" class="func">
+                <h3>Social Events</h3>
+            </label>
+            <div class="Social">
+               
+                <div class="events">
+                    {% for event in events %}
+    <form method="POST" action="{{ url_for('event') }}">
+        <div class="event" onclick="this.parentNode.submit()">{{ event['event_name'] }}</div>
+        <input type="text" name="event_id" value="{{ event['event_id'] }}" hidden />
+    </form>
+{% endfor %}
+
+    </div>
+            </div>
+        </div>
+
+        <div>
+            <label class="label" for="rewards" class="func">
+                <h3>Rewards Received</h3>
+            </label>
+            <div class="Social">
+                <div>
+                    <span><img class="badges" src="static/badge1.png" alt="badge1"></span>
+                    <span><img class="badges" src="static/badge2.png" alt="badge1"></span>
+                </div>
+                <div>
+                    <span><img class="badges" src="static/badge3.png" alt="badge1"></span>
+                    <span><img class="badges" src="static/badge3.png" alt="badge1"></span>
+                </div>
+                <div>
+                    <span><img class="badges" src="static/badge5.png" alt="badge1"></span>
+                    <span><img class="badges" src="static/badge6.png" alt="badge1"></span>
+                </div>
+                <div>
+                    <span><img class="badges" src="static/badge7.png" alt="badge1"></span>
+                    <span><img class="badges" src="static/badge8.png" alt="badge1"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="footer-column">
+            <h3>About SocialScore</h3>
+            <ul>
+                <li><a href="#">About us</a></li>
+                <li><a href="#">Contact us</a></li>
+                <li><a href="#">Mobile Version</a></li>
+                <li><a href="#">SocialScore on Mobile</a></li>
+                <li><a href="#">Sitemap</a></li>
+                <li><a href="#">Offers</a></li>
+                <li><a href="#">Careers</a></li>
+                <li><a href="#">Values</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3>Info</h3>
+            <ul>
+                <li><a href="#">Terms and Conditions</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">FAQ</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">User Guide</a></li>
+                <li><a href="#">API Documentation</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3>Global Sites</h3>
+            <ul>
+                <li><a href="#">United States</a></li>
+                <li><a href="#">Canada</a></li>
+                <li><a href="#">United Kingdom</a></li>
+                <li><a href="#">Australia</a></li>
+                <li><a href="#">India</a></li>
+                <li><a href="#">Singapore</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3>Our Partners</h3>
+            <ul>
+                <li><a href="#">Partner 1</a></li>
+                <li><a href="#">Partner 2</a></li>
+                <li><a href="#">Partner 3</a></li>
+                <li><a href="#">Partner 4</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        SocialScore is a leading platform for analyzing and managing social scores, trusted by users globally.
+        SocialScore offers insights through its website and mobile apps for all major platforms.<br>
+        © 2024 SocialScore Inc.
+    </div>
+
+
+
+
+</body>
+
+</html>

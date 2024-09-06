@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activity Detail</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='edi.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='activity_detail.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='NavBar.css') }}"> 
+    <link rel="stylesheet" href="{{ url_for('static', filename='footer.css') }}">
+</head>
+<body>
+    <div id="navbar">
+        <h1 class="sitename">The Social Score</h1>
+        <ul class="navitems">
+            <li class="navitem">
+              <a href="{{ url_for('homepage') }}" class="navlink">Home</a>
+            </li>
+            <li class="navitem">
+                <a href="#" class="navlink">About</a>
+                <div class="additional-info">Learn more about our college and system.</div>
+            </li>
+            <li class="navitem">
+                <a href="#" class="navlink">Contact</a>
+                <div class="additional-info">Get in touch with us for any inquiries or support.</div>
+            </li>
+            <li class="navitem">
+                <a href="#" class="navlink">RuleBook</a>
+                <div class="additional-info">Read our rulebook for guidelines and policies.</div>
+            </li>
+            <li class="navitem">
+                <a href="#" class="navlink">Profile</a>
+                <div class="additional-info">View and manage your profile information.</div>
+            </li>
+            <li class="navitem">
+                <a href="#" class="navlink">Activities</a>
+                <div class="additional-info">Explore and participate in various activities.</div>
+            </li>
+            <li class="navitem">
+                <a href="#" class="navlink">Leaderboard</a>
+                <div class="additional-info">See who's leading the social credit score.</div>
+            </li>
+            <li class="navitem">
+                <a href="#" class="navlink">News & Updates</a>
+                <div class="additional-info">Stay updated with the latest news and announcements.</div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="activity-detail">
+        <h1>{{ activity['activity_name'] }}</h1>
+        <p>{{ activity['description'] }}</p>
+
+        {% if activity['score'] %}
+        <div class="activity-score">
+            <label>Score:</label>
+            <span>{{ activity['score'] }}</span>
+        </div>
+        {% endif %}
+
+        {% if activity['status'] %}
+        <div class="activity-status">
+            <label>Status:</label>
+            <span>{{ activity['status'] }}</span>
+        </div>
+        {% endif %}
+    </div>
+    <div class="footer">
+        <div class="footer-column">
+            <h3>About SocialScore</h3>
+            <ul>
+                <li><a href="#">About us</a></li>
+                <li><a href="#">Contact us</a></li>
+                <li><a href="#">Mobile Version</a></li>
+                <li><a href="#">SocialScore on Mobile</a></li>
+                <li><a href="#">Sitemap</a></li>
+                <li><a href="#">Offers</a></li>
+                <li><a href="#">Careers</a></li>
+                <li><a href="#">Values</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3>Info</h3>
+            <ul>
+                <li><a href="#">Terms and Conditions</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">FAQ</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">User Guide</a></li>
+                <li><a href="#">API Documentation</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3>Global Sites</h3>
+            <ul>
+                <li><a href="#">United States</a></li>
+                <li><a href="#">Canada</a></li>
+                <li><a href="#">United Kingdom</a></li>
+                <li><a href="#">Australia</a></li>
+                <li><a href="#">India</a></li>
+                <li><a href="#">Singapore</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3>Our Partners</h3>
+            <ul>
+                <li><a href="#">Partner 1</a></li>
+                <li><a href="#">Partner 2</a></li>
+                <li><a href="#">Partner 3</a></li>
+                <li><a href="#">Partner 4</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        SocialScore is a leading platform for analyzing and managing social scores, trusted by users globally.
+        SocialScore offers insights through its website and mobile apps for all major platforms.<br>
+        © 2024 SocialScore Inc.
+    </div>
+</body>
+</html>

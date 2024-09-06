@@ -1,0 +1,65 @@
+body, h1, h2, h3, p, ul, li, div {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#navbar {
+    background-color: #151e38;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sitename {
+    margin-right: auto; /* Pushes the title to the left */
+    color: white;
+    margin-left: 15px;
+}
+
+.navitems {
+    list-style-type: none;
+    display: flex;
+    padding: 0;
+}
+
+.navitem {
+    margin-right: 20px;
+    position: relative; /* Needed for absolute positioning of additional info */
+}
+
+.navlink {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.navlink:hover {
+    background-color: #2a3b6d;
+}
+
+/* Additional info box */
+.additional-info {
+    position: absolute;
+    left: 50%;
+    margin-top: 15px;
+    transform: translateX(-50%); /* Center horizontally */
+    background-color: #2a3b6d;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    width: 200px;
+    opacity: 0; /* Initially hidden */
+    visibility: hidden; /* Initially hidden */
+    transition: opacity 0.3s, visibility 0.3s;
+}
+
+/* Show additional info box on hover */
+.navitem:hover .additional-info {
+    opacity: 1;
+    visibility: visible;
+}

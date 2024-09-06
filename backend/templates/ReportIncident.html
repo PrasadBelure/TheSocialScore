@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Report Incident</title>
+  <style>
+    /* General Styles */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-color: #dc9e82;
+      color: #333;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color:#f5f5dc ;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    /* Form Styles */
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 5px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="date"],
+    textarea,
+    input[type="file"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+      font-size: 16px;
+      background-color:#fff ;
+    }
+
+    input[type="file"] {
+      padding: 3px;
+    }
+
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    input[type="date"]:focus,
+    textarea:focus {
+      border-color: #c16e70;
+      outline: none;
+    }
+
+    .submit-btn {
+      background-color: #a55858;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+      align-self: flex-end;
+    }
+
+    .submit-btn:hover {
+      background-color: #c16e70;
+    }
+  </style>
+  <link rel="stylesheet" href="{{ url_for('static', filename='footer.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='NavBar.css') }}">
+</head>
+<body>
+    <div id="navbar">
+        <h1 class="sitename">The Social Score</h1>
+        <ul class="navitems">
+            <li class="navitem">
+                <a href="{{ url_for('homepage') }}" class="navlink">Home</a>
+    
+            </li>
+    
+            <li class="navitem">
+                <a href="#" class="navlink">About</a>
+                <div class="additional-info">Learn more about our college and system.</div>
+            </li>
+    
+            <li class="navitem">
+                <a href="#" class="navlink">Contact</a>
+                <div class="additional-info">Get in touch with us for any inquiries or support.</div>
+            </li>
+    
+            <li class="navitem">
+                <a href="#" class="navlink">RuleBook</a>
+                <div class="additional-info">Read our rulebook for guidelines and policies.</div>
+            </li>
+    
+            <li class="navitem">
+                <a href="#" class="navlink">Profile</a>
+                <div class="additional-info">View and manage your profile information.</div>
+            </li>
+    
+            <li class="navitem">
+                <a href="#" class="navlink">Activities</a>
+                <div class="additional-info">Explore and participate in various activities.</div>
+            </li>
+    
+            <li class="navitem">
+                <a href="#" class="navlink">Leaderboard</a>
+                <div class="additional-info">See who's leading the social credit score.</div>
+            </li>
+    
+            <li class="navitem">
+                <a href="#" class="navlink">News & Updates</a>
+                <div class="additional-info">Stay updated with the latest news and announcements.</div>
+            </li>
+        </ul>
+    </div>
+    
+  <div class="container">
+    <h1>Report Incident</h1>
+    <form action="/report_incident_insertion" method="post" enctype="multipart/form-data">
+      <div class="form-group">
+        <label for="name">Your Name:</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="person-name">Name of the Person:</label>
+        <input type="text" id="person-name" name="person-name" required>
+      </div>
+      <div class="form-group">
+        <label for="cause">Cause for Reporting:</label>
+        <textarea id="cause" name="cause" rows="4" required></textarea>
+      </div>
+      <div class="form-group">
+        <label for="incident-date">Date of Incident:</label>
+        <input type="date" id="incident-date" name="incident-date" required>
+      </div>
+      <div class="form-group">
+        <label for="incident-location">Location of Incident:</label>
+        <input type="text" id="incident-location" name="incident-location" required>
+      </div>
+      <div class="form-group">
+        <label for="witnesses">Witnesses (if any):</label>
+        <input type="text" id="witnesses" name="witnesses">
+      </div>
+      <button type="submit" class="submit-btn">Submit Report</button>
+    </form>
+  </div>
+  <div class="footer">
+    <div class="footer-column">
+        <h3>About SocialScore</h3>
+        <ul>
+            <li><a href="#">About us</a></li>
+            <li><a href="#">Contact us</a></li>
+            <li><a href="#">Mobile Version</a></li>
+            <li><a href="#">SocialScore on Mobile</a></li>
+            <li><a href="#">Sitemap</a></li>
+            <li><a href="#">Offers</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Values</a></li>
+        </ul>
+    </div>
+    <div class="footer-column">
+        <h3>Info</h3>
+        <ul>
+            <li><a href="#">Terms and Conditions</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">User Guide</a></li>
+            <li><a href="#">API Documentation</a></li>
+        </ul>
+    </div>
+    <div class="footer-column">
+        <h3>Global Sites</h3>
+        <ul>
+            <li><a href="#">United States</a></li>
+            <li><a href="#">Canada</a></li>
+            <li><a href="#">United Kingdom</a></li>
+            <li><a href="#">Australia</a></li>
+            <li><a href="#">India</a></li>
+            <li><a href="#">Singapore</a></li>
+        </ul>
+    </div>
+    <div class="footer-column">
+        <h3>Our Partners</h3>
+        <ul>
+            <li><a href="#">Partner 1</a></li>
+            <li><a href="#">Partner 2</a></li>
+            <li><a href="#">Partner 3</a></li>
+            <li><a href="#">Partner 4</a></li>
+        </ul>
+    </div>
+</div>
+<div class="footer-bottom">
+    SocialScore is a leading platform for analyzing and managing social scores, trusted by users globally.
+    SocialScore offers insights through its website and mobile apps for all major platforms.<br>
+    © 2024 SocialScore Inc.
+</div>
+</body>
+</html>
